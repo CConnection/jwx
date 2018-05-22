@@ -30,11 +30,11 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/lestrrat-go/jwx/jwa"
-	"github.com/lestrrat-go/jwx/jwk"
-	"github.com/lestrrat-go/jwx/jws/sign"
-	"github.com/lestrrat-go/jwx/jws/verify"
-	pdebug "github.com/lestrrat-go/pdebug"
+	"github.com/CConnection/jwx/jwa"
+	"github.com/CConnection/jwx/jwk"
+	"github.com/CConnection/jwx/jws/sign"
+	"github.com/CConnection/jwx/jws/verify"
+	pdebug "github.com/CConnection/pdebug"
 	"github.com/pkg/errors"
 )
 
@@ -297,17 +297,17 @@ func Verify(buf []byte, alg jwa.SignatureAlgorithm, key interface{}) (ret []byte
 
 // VerifyWithJKU verifies the JWS message using a remote JWK
 // file represented in the url.
-func VerifyWithJKU(buf []byte, jwkurl string) ([]byte, error) {
+func VerifyWithJKU(buf []byte, alg jwa.SignatureAlgorithm, jwkurl string) ([]byte, error) {
 	key, err := jwk.FetchHTTP(jwkurl)
 	if err != nil {
 		return nil, errors.Wrap(err, `failed to fetch jwk via HTTP`)
 	}
 
-	return VerifyWithJWKSet(buf, key, nil)
+	return VerifyWithJWKSet(buf, alg, key, nil)
 }
 
 // VerifyWithJWK verifies the JWS message using the specified JWK
-func VerifyWithJWK(buf []byte, key jwk.Key) (payload []byte, err error) {
+func VerifyWithJWK(buf []byte, alg jwa.SignatureAlgorithm, key jwk.Key) (payload []byte, err error) {
 	if pdebug.Enabled {
 		g := pdebug.Marker("jws.VerifyWithJWK").BindError(&err)
 		defer g.End()
@@ -318,7 +318,7 @@ func VerifyWithJWK(buf []byte, key jwk.Key) (payload []byte, err error) {
 		return nil, errors.Wrap(err, `failed to materialize jwk.Key`)
 	}
 
-	payload, err = Verify(buf, jwa.SignatureAlgorithm(key.Algorithm()), keyval)
+	payload, err = Verify(buf, alg, keyval)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to verify message")
 	}
@@ -329,7 +329,7 @@ func VerifyWithJWK(buf []byte, key jwk.Key) (payload []byte, err error) {
 // By default it will only pick up keys that have the "use" key
 // set to either "sig" or "enc", but you can override it by
 // providing a keyaccept function.
-func VerifyWithJWKSet(buf []byte, keyset *jwk.Set, keyaccept JWKAcceptFunc) (payload []byte, err error) {
+func VerifyWithJWKSet(buf []byte, alg jwa.SignatureAlgorithm, keyset *jwk.Set, keyaccept JWKAcceptFunc) (payload []byte, err error) {
 	if pdebug.Enabled {
 		g := pdebug.Marker("jws.VerifyWithJWKSet").BindError(&err)
 		defer g.End()
@@ -343,7 +343,7 @@ func VerifyWithJWKSet(buf []byte, keyset *jwk.Set, keyaccept JWKAcceptFunc) (pay
 			continue
 		}
 
-		payload, err := VerifyWithJWK(buf, key)
+		payload, err := VerifyWithJWK(buf, alg, key)
 		if err == nil {
 			return payload, nil
 		}

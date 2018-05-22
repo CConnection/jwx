@@ -5,7 +5,7 @@ import (
 	"crypto/ecdsa"
 	"math/big"
 
-	"github.com/lestrrat-go/jwx/jwa"
+	"github.com/CConnection/jwx/jwa"
 	"github.com/pkg/errors"
 )
 

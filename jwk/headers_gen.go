@@ -7,8 +7,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/lestrrat-go/jwx/jwa"
-	"github.com/lestrrat-go/pdebug"
+	"github.com/CConnection/jwx/jwa"
+	"github.com/CConnection/pdebug"
 	"github.com/pkg/errors"
 )
 

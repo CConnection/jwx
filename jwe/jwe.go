@@ -7,10 +7,10 @@ import (
 	"crypto/rsa"
 	"encoding/json"
 
-	"github.com/lestrrat-go/jwx/buffer"
-	"github.com/lestrrat-go/jwx/internal/debug"
-	"github.com/lestrrat-go/jwx/jwa"
-	"github.com/lestrrat-go/jwx/jwk"
+	"github.com/CConnection/jwx/buffer"
+	"github.com/CConnection/jwx/internal/debug"
+	"github.com/CConnection/jwx/jwa"
+	"github.com/CConnection/jwx/jwk"
 	"github.com/pkg/errors"
 )
 

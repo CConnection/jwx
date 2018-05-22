@@ -1,8 +1,8 @@
 package jws
 
 import (
-	"github.com/lestrrat-go/jwx/internal/option"
-	"github.com/lestrrat-go/jwx/jws/sign"
+	"github.com/CConnection/jwx/internal/option"
+	"github.com/CConnection/jwx/jws/sign"
 )
 
 type Option = option.Interface

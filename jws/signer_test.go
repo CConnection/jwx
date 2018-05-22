@@ -8,10 +8,10 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/lestrrat-go/jwx/jwa"
-	"github.com/lestrrat-go/jwx/jws"
-	"github.com/lestrrat-go/jwx/jws/sign"
-	"github.com/lestrrat-go/jwx/jws/verify"
+	"github.com/CConnection/jwx/jwa"
+	"github.com/CConnection/jwx/jws"
+	"github.com/CConnection/jwx/jws/sign"
+	"github.com/CConnection/jwx/jws/verify"
 	"github.com/stretchr/testify/assert"
 )
 

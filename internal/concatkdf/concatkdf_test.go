@@ -4,7 +4,7 @@ import (
 	"crypto"
 	"testing"
 
-	"github.com/lestrrat-go/jwx/jwa"
+	"github.com/CConnection/jwx/jwa"
 	"github.com/stretchr/testify/assert"
 )
 
