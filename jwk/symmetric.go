@@ -7,7 +7,7 @@ import (
 
 	"github.com/CConnection/jwx/internal/base64"
 	"github.com/CConnection/jwx/jwa"
-	pdebug "github.com/CConnection/pdebug"
+	pdebug "github.com/lestrrat-go/pdebug"
 	"github.com/pkg/errors"
 )
 

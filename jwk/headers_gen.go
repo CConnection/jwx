@@ -8,7 +8,7 @@ import (
 	"fmt"
 
 	"github.com/CConnection/jwx/jwa"
-	"github.com/CConnection/pdebug"
+	"github.com/lestrrat-go/pdebug"
 	"github.com/pkg/errors"
 )
 

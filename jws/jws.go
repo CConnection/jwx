@@ -34,7 +34,7 @@ import (
 	"github.com/CConnection/jwx/jwk"
 	"github.com/CConnection/jwx/jws/sign"
 	"github.com/CConnection/jwx/jws/verify"
-	pdebug "github.com/CConnection/pdebug"
+	pdebug "github.com/lestrrat-go/pdebug"
 	"github.com/pkg/errors"
 )
 
